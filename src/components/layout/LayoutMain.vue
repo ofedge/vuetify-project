@@ -1,9 +1,7 @@
 <template>
     <v-main>
       <layout-bar></layout-bar>
-      <v-container fluid>
-        <h3>Hello</h3>
-      </v-container>
+      <router-view></router-view>
     </v-main>
 </template>
 
@@ -33,7 +31,7 @@ export default {
   methods: {
     getUserInfo() {
       getUserInfo().then(res => {
-        if (res.code === 200) {
+        if (res.code === 0) {
           this.$store.commit('setUserInfo', res.data);
         } else {
           console.error(res.msg);

@@ -12,7 +12,21 @@ const routes = [
   {
     path: '/main',
     name: 'Main',
-    component: () => import('../components/layout/LayoutMain')
+    redirect: '/main/user',
+    component: () => import('../components/layout/LayoutMain'),
+    children: [{
+      path: 'user',
+      name: 'UserManager',
+      component: () => import('../views/user/Index')
+    }, {
+      path: 'role',
+      name: 'RoleManager',
+      component: () => import('../views/role/Index')
+    }, {
+      path: 'test',
+      name: 'TestPage',
+      component: () => import('../views/test/Index')
+    }]
   }
 ]
 

@@ -19,5 +19,13 @@ export function signOut() {
   return fetch({
     url: '/api/session',
     method: 'delete'
-  })
+  });
+}
+
+export function modifyPassword(params) {
+  return fetch({
+    url: '/api/session/password',
+    method: 'put',
+    data: params
+  });
 }

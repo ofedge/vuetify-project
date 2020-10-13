@@ -12,7 +12,6 @@
                 <v-text-field
                   label="Username"
                   v-model="login.username"
-                  name="login"
                   prepend-icon="mdi-account"
                   :rules="rules.username"
                   type="text"
@@ -20,8 +19,7 @@
                 <v-text-field
                   id="Password"
                   v-model="login.password"
-                  label="password"
-                  name="password"
+                  label="Password"
                   prepend-icon="mdi-lock"
                   :rules="rules.password"
                   type="password"
@@ -77,15 +75,15 @@ export default {
         return;
       }
       signIn(this.loginForm).then(res => {
-        if (res.code === 200) {
+        if (res.code === 0) {
           setToken(res.data.token);
           this.$store.commit('setUserInfo', res.data);
           this.$router.push({ name: 'Main' });
         } else {
-          console.error(res.msg);
+          this.$message.error(res.msg);
         }
       }).catch(err => {
-        console.error(err);
+        this.$message.error(err);
       });
     }
   }

@@ -18,7 +18,7 @@ service.interceptors.request.use(config => {
 
 service.interceptors.response.use(response => {
   const res = response.data;
-  if (res.code === 401) {
+  if (res.code >= 1000 && res.code < 1100) {
     removeToken();
     store.commit('setUserInfo', {});
     router.push({ name: 'SignIn' });
